@@ -6,7 +6,7 @@
 /*   By: dcsoma <dcsoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:21:12 by dcsoma            #+#    #+#             */
-/*   Updated: 2023/11/01 19:25:02 by dcsoma           ###   ########.fr       */
+/*   Updated: 2023/11/01 19:47:16 by dcsoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*remaining(char *str)
 	i = line_end(str, i);
 	new_str = (char *)malloc((ft_strlen(str) - i + 1));
 	if (!new_str)
-		return (free(new_str), NULL);
+		return (free(new_str), free(str), NULL);
 	while (str[i] != '\0')
 		new_str[j++] = str[i++];
 	new_str[j] = '\0';
@@ -102,6 +102,9 @@ char	*get_next_line(int fd)
 		}
 		content[bytes] = '\0';
 		buffer = ft_strjoin(buffer, content);
+		if (!buffer)
+			return (free(content), NULL);
+		
 	}
 	free(content);
 	content = read_line(buffer);
@@ -109,9 +112,11 @@ char	*get_next_line(int fd)
 	return (content);
 }
 
-/*int main()
+int main(int argc, char **argv)
 {
-    int fd = open("csoves.txt", O_RDONLY);
+	while (argc)
+		break ;
+    int fd = open(argv[1], O_RDONLY);
 
     if (fd < 0)
     {
@@ -128,4 +133,4 @@ char	*get_next_line(int fd)
 
     close(fd);
     return 0;
-}*/
+}

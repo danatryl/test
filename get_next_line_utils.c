@@ -6,7 +6,7 @@
 /*   By: dcsoma <dcsoma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:24:29 by dcsoma            #+#    #+#             */
-/*   Updated: 2023/11/01 19:24:34 by dcsoma           ###   ########.fr       */
+/*   Updated: 2023/11/01 19:44:35 by dcsoma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ char	*ft_strdup(const char *s)
 	char	*replica;
 
 	len = ft_strlen((char *)s) + 1;
-	replica = (char *) malloc(len);
 	i = 0;
+	replica = (char *) malloc(len);
 	if (replica != NULL)
 	{
 		while (s[i] != '\0')
